@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace EconomyDataLoader.Models.BLS;
+﻿namespace EconomyDataLoader.Models.BLS;
 
 internal class BlsResults<T>
 {

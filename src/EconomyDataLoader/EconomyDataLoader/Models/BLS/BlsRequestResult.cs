@@ -1,8 +1,6 @@
-﻿using System.Text.Json.Serialization;
+﻿namespace EconomyDataLoader.Models.BLS;
 
-namespace EconomyDataLoader.Models.BLS;
-
-internal class BlsRequestResult<T>
+internal class BeaRequestResult<T>
 {
     [JsonPropertyName("status")]
     public string Status { get; set; } = string.Empty;

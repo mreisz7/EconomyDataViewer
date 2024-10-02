@@ -1,7 +1,4 @@
-﻿using EconomyDataLoader.Utilities;
-using System.Text.Json.Serialization;
-
-namespace EconomyDataLoader.Models.StockIndex;
+﻿namespace EconomyDataLoader.Models.StockIndex;
 
 public class StockIndexMonthlyResultRecord
 {

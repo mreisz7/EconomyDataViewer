@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-
-namespace EconomyDataLoader.Models.StockIndex;
+﻿namespace EconomyDataLoader.Models.StockIndex;
 
 internal class StockIndexRequestResult
 {
