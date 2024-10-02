@@ -1,12 +1,8 @@
-﻿using EconomyDataLoader.Models.BLS;
-using System.Text.Json;
-using static System.Net.WebRequestMethods;
-
-namespace EconomyDataLoader.Data;
+﻿namespace EconomyDataLoader.Data;
 
 internal static class FetchBlsData
 {
-    public static async Task<List<T>> FetchDataAsync<T>(string seriesId, string registrationKey)
+    public static async Task<List<T>> FetchDataAsync<T>(string seriesId, string registrationKey) where T : BlsRecord
     {
         List<T> results = [];
         var client = new HttpClient();
@@ -25,7 +21,7 @@ internal static class FetchBlsData
             {
                 var response = await client.GetAsync(URL);
                 var content = await response.Content.ReadAsStringAsync();
-                var blsData = JsonSerializer.Deserialize<BlsRequestResult<T>>(content);
+                var blsData = JsonSerializer.Deserialize<BeaRequestResult<T>>(content);
                 results.AddRange(blsData!.Results.Series[0].Data);
             }
             catch (Exception ex)
@@ -34,6 +30,6 @@ internal static class FetchBlsData
             }
         }
         
-        return results;
+        return results.OrderBy(r => r.Year).ThenBy(r => r.Period).ToList();
     }
 }

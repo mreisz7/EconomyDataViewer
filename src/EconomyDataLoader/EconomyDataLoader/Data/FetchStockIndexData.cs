@@ -1,7 +1,4 @@
-﻿using EconomyDataLoader.Models.StockIndex;
-using System.Text.Json;
-
-namespace EconomyDataLoader.Data;
+﻿namespace EconomyDataLoader.Data;
 
 internal static class FetchStockIndexData
 {
@@ -31,7 +28,7 @@ internal static class FetchStockIndexData
             Console.WriteLine(ex.Message);
         }
         
-        return results;
+        return results.OrderBy(r => r.RowDateTimestamp).ToList();
     }
 
     public enum StockIndex
