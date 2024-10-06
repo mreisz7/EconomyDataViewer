@@ -1,6 +1,8 @@
-﻿namespace EconomyDataLoader.Models.StockIndex;
+﻿using System.Globalization;
 
-public class StockIndexMonthlyResultRecord
+namespace EconomyDataLoader.Models.StockIndex;
+
+public class StockIndexMonthlyResultRecord : IPeriodicData
 {
     [JsonPropertyName("rowDate")]
     public string RowDate { get; set; } = string.Empty;
@@ -30,4 +32,12 @@ public class StockIndexMonthlyResultRecord
     [JsonPropertyName("change_precent")]
     [JsonConverter(typeof(StringToFloatConverter))]
     public float ChangePercent { get; set; }
+
+    public PeriodInfo GetPeriodInfo()
+    {
+        int year = RowDateTimestamp.Year;
+        int month = RowDateTimestamp.Month;
+        string monthName = CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
+        return new PeriodInfo(year, PeriodTypeEnum.Monthly, monthName, $"{monthName} {year}");
+    }
 }

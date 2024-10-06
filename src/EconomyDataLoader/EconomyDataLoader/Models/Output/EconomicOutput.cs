@@ -3,7 +3,7 @@
 public class EconomicOutput
 {
     [JsonPropertyName("summary")]
-    public Summary Summary { get; set; } = new();
+    public DataSummary Summary { get; set; } = new();
 
     [JsonPropertyName("politicalData")]
     public PoliticalData PoliticalData { get; set; } = new();

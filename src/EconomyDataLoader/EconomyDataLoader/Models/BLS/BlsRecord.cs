@@ -3,7 +3,8 @@
 public class BlsRecord
 {
     [JsonPropertyName("year")]
-    public string Year { get; set; } = string.Empty;
+    [JsonConverter(typeof(StringToIntConverter))]
+    public int Year { get; set; }
 
     [JsonPropertyName("period")]
     public string Period { get; set; } = string.Empty;

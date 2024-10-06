@@ -1,19 +1,7 @@
 ﻿namespace EconomyDataLoader.Models.Output;
 
-public class EconomicData
+public class EconomicData(int year, PeriodTypeEnum periodType, string period, string periodLabel) : PeriodInfo(year, periodType, period, periodLabel)
 {
-    [JsonPropertyName("year")]
-    public int Year { get; set; }
-
-    [JsonPropertyName("periodType")]
-    public string PeriodType { get; set; } = string.Empty;
-
-    [JsonPropertyName("period")]
-    public string Period { get; set; } = string.Empty;
-
-    [JsonPropertyName("periodLabel")]
-    public string PeriodLabel { get; set; } = string.Empty;
-
     [JsonPropertyName("data")]
     public EconomicDataValues Data { get; set; } = new();
 }

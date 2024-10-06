@@ -1,6 +1,6 @@
 ﻿namespace EconomyDataLoader.Models.Output;
 
-public class Summary
+public class DataSummary
 {
     [JsonPropertyName("dateMin")]
     public DateOnly DateMin { get; set; }
