@@ -37,4 +37,21 @@ string beaApiKey = configuration["BeaApiKey"] ?? throw new NullReferenceExceptio
 // Per-Capita Personal Income  - https://apps.bea.gov/api/data/
 List<BeaDataRecord> beaData = await FetchBeaData.FetchDataAsync(beaApiKey!);
 
-Console.WriteLine("Finished");
+DataOutput dataOutput = new();
+
+dataOutput.AddBlsUnemploymentData(unemploymentData)
+          .AddBlsCpiData(cpiData)
+          .AddBlsGasolinePriceData(gasolineData)
+          .AddBlsElectricityPriceData(electricityData)
+          .AddSP500Data(sp500Data)
+          .AddNasdaqData(nasdaqData)
+          .AddDowJonesData(dowJonesData)
+          .AddBeaPersonalIncomeData(beaData)
+          .Finalize();
+
+string output = dataOutput.ToJson();
+
+// Write the output to a file called "economicData.json"
+await File.WriteAllTextAsync("economicData.json", output);
+
+Console.WriteLine(output);
